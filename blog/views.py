@@ -42,3 +42,6 @@ def post_edit(request, pk):
 def project_list(request):
     projects = Project.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/project_list.html', {'projects': projects})
+
+def about(request):
+    return render(request, 'blog/about.html', {})
