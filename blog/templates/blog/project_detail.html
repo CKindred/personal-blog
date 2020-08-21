@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load embed_video_tags %}
+
+{%block title %}{{project.title}}{%endblock%}
+
+{% block content %}
+    <div class="post">
+        <div class="date">
+            {{ project.published_date }}
+        </div>
+        <h2>{{project.title}}</h2>
+        <p>{{ project.text|linebreaksbr }}</p>
+        <img href="{{project.img}}"/>
+        {% video project.video as vid %}
+            {% video vid "medium" %}
+        {% endvideo %}
+        {% if project.link1 != "" %}
+            <p><a href="{{project.link1}}">{{project.link1}}</a></p>
+        {% endif %}
+        <p><a href="{{project.link2}}">{{project.link2}}</a></p>
+    </div>
+{% endblock %}

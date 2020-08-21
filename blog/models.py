@@ -21,6 +21,7 @@ class Project(models.Model):
     title = models.CharField(max_length=200)
     text = models.TextField()
     video = EmbedVideoField(blank=True)
+    img = models.URLField(max_length=200, blank=True)
     link1 = models.URLField(max_length=200, blank=True)
     link2 = models.URLField(max_length=200, blank=True)
     created_date = models.DateTimeField(default=timezone.now)

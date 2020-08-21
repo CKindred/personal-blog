@@ -1,16 +1,19 @@
 {% extends 'blog/base.html' %}
 {% load embed_video_tags %}
 
+{% block title %}Callum Kindred | Projects{% endblock %}
 
 {% block content %}
+    <h1 style="padding-bottom: 20px;">My Projects</h1>
     {% for project in projects %}
 
         <div class="post">
             <div class="date">
                 {{ project.published_date }}
             </div>
-            <h2>{{project.title}}</h2>
+            <h2><a href="{% url 'project_detail' pk=project.pk %}">{{project.title}}</h2></a>
             <p>{{ project.text|linebreaksbr }}</p>
+            <img href="{{project.img}}"/>
             {% video project.video as vid %}
                 {% video vid "medium" %}
             {% endvideo %}

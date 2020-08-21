@@ -43,5 +43,9 @@ def project_list(request):
     projects = Project.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/project_list.html', {'projects': projects})
 
+def project_detail(request, pk):
+    project = get_object_or_404(Project, pk=pk)
+    return render(request, 'blog/project_detail.html', {'project': project})
+
 def about(request):
     return render(request, 'blog/about.html', {})
